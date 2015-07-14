@@ -40,7 +40,7 @@ insert message (Node left m' right) = if timeStamp m' > timeStamp message
                                       else Node (insert message left) m' right
 
 build :: [LogMessage] -> MessageTree
-build messages = build' Leaf messages where
+build = build' Leaf where
     build' tree []     = tree
     build' tree (m:ms) = build' (insert m tree) ms
 

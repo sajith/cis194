@@ -44,3 +44,21 @@ build messages = build' Leaf messages where
     build' tree []     = tree
     build' tree (m:ms) = build' (insert m tree) ms
 
+inOrder :: MessageTree -> [LogMessage]
+inOrder Leaf         = []
+inOrder (Node l m r) = inOrder l ++ [m] ++ inOrder r
+
+whatWentWrong :: [LogMessage] -> [String]
+whatWentWrong messages = map getMessage $ filter (\m -> isError m && hasSeverity 50 m) messages
+    where
+        getMessage :: LogMessage -> String
+        getMessage (LogMessage _ _ str) = str
+        getMessage (Unknown str)        = str
+        
+        isError :: LogMessage -> Bool
+        isError (LogMessage (Error _) _ _) = True
+        isError _                          = False
+
+        hasSeverity :: Int -> LogMessage -> Bool
+        hasSeverity lvl (LogMessage (Error n) _ _) = if n >= lvl then True else False
+        hasSeverity _ _                            = False

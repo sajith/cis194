@@ -59,5 +59,5 @@ whatWentWrong messages = map getMessage $ filter (\m -> isError m && hasSeverity
         isError _                          = False
 
         hasSeverity :: Int -> LogMessage -> Bool
-        hasSeverity lvl (LogMessage (Error n) _ _) = if n >= lvl then True else False
+        hasSeverity lvl (LogMessage (Error n) _ _) = n >= lvl
         hasSeverity _ _                            = False

@@ -41,7 +41,7 @@ insert message (Node left m' right) = if timeStamp m' > timeStamp message
 
 build :: [LogMessage] -> MessageTree
 build = build' Leaf where
-    build' tree ms = foldl (flip insert) tree ms
+    build' = foldl (flip insert)
 
 inOrder :: MessageTree -> [LogMessage]
 inOrder Leaf         = []

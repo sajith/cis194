@@ -29,17 +29,13 @@ parse file = map parseMessage $ lines file
 
 timeStamp :: LogMessage -> TimeStamp
 timeStamp (LogMessage _ ts _) = ts
-timeStamp (Unknown _ )        = -1
+timeStamp (Unknown _ ) = error "unknown message type"
 
 -- TODO: wrong?
 insert :: LogMessage -> MessageTree -> MessageTree
-insert message tree =
-    if (timeStamp message == -1)
-    then tree
-    else case tree of
-            Leaf -> Node Leaf m' Leaf
-            Node left l right ->
-                if timeStamp l > timeStamp message
-                then Node left m' (insert message right)
-                else Node (insert message left) m' right
+insert (Unknown _) tree             = tree
+insert message Leaf                 = Node Leaf message Leaf
+insert message (Node left m' right) = if timeStamp m' > timeStamp message
+                                      then Node left m' (insert message right)
+                                      else Node (insert message left) m' right
 

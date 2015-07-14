@@ -4,6 +4,8 @@ module LogAnalysis where
 
 import           Log
 
+------------------------------------------------------------
+
 parseMessage :: String -> LogMessage
 parseMessage message =
     case msgType of
@@ -47,13 +49,16 @@ inOrder :: MessageTree -> [LogMessage]
 inOrder Leaf         = []
 inOrder (Node l m r) = inOrder l ++ [m] ++ inOrder r
 
+------------------------------------------------------------
+
 whatWentWrong :: [LogMessage] -> [String]
-whatWentWrong messages = map getMessage $ filter (\m -> isError m && hasSeverity 50 m) messages
+whatWentWrong messages = map getMessage
+                         $ filter (\m -> isError m && hasSeverity 50 m) messages
     where
         getMessage :: LogMessage -> String
         getMessage (LogMessage _ _ str) = str
         getMessage (Unknown str)        = str
-        
+
         isError :: LogMessage -> Bool
         isError (LogMessage (Error _) _ _) = True
         isError _                          = False
@@ -61,3 +66,5 @@ whatWentWrong messages = map getMessage $ filter (\m -> isError m && hasSeverity
         hasSeverity :: Int -> LogMessage -> Bool
         hasSeverity lvl (LogMessage (Error n) _ _) = n >= lvl
         hasSeverity _ _                            = False
+
+------------------------------------------------------------

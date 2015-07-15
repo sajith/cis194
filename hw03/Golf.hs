@@ -1,6 +1,8 @@
 
 module Golf where
 
+------------------------------------------------------------
+
 skips :: [a] -> [[a]]
 skips xs = map (`skipn` xs) [1..length xs]
     where
@@ -9,3 +11,4 @@ skips xs = map (`skipn` xs) [1..length xs]
             (y:ys) -> y : skipn n ys
             []     -> []
 
+------------------------------------------------------------

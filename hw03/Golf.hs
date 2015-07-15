@@ -1,6 +1,7 @@
 
 module Golf where
 
+-- TODO: fix this
 skips :: [a] -> [[a]]
 skips xs = [xs] ++ map (\n -> skip n xs) [1..length xs-1]
 

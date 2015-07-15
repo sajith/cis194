@@ -23,6 +23,7 @@ localMaxima xs = concatMap (\n -> [xs !! n | isMaxima n xs]) [1..(length xs-2)]
              
 ------------------------------------------------------------
 
+-- TODO: this does not work.
 histogram :: [Integer] -> String
 histogram xs = makeHistogram xs'
     where

@@ -15,12 +15,12 @@ skips xs = map (`skipn` xs) [1..length xs]
 
 ------------------------------------------------------------
 
--- TODO: this works, but array indexing is bad style.
 localMaxima :: [Integer] -> [Integer]
-localMaxima xs = concatMap (\n -> [xs !! n | isMaxima n xs]) [1..(length xs-2)]
-    where
-        isMaxima n xs = (xs !! n) > (xs !! (n-1)) && (xs !! n) > (xs !! (n+1))
-             
+localMaxima (x:y:z:xs) = if y > x && y > z
+                         then y:localMaxima (z:xs)
+                         else localMaxima (y:z:xs)
+localMaxima _          = []
+
 ------------------------------------------------------------
 
 -- TODO: this does not work.

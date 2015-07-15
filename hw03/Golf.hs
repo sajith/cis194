@@ -1,6 +1,8 @@
 
 module Golf where
 
+import Data.List (group, sort)
+
 ------------------------------------------------------------
 
 skips :: [a] -> [[a]]
@@ -19,4 +21,16 @@ localMaxima xs = concatMap (\n -> if isMaxima n xs then [xs !! n] else []) [1..(
     where
         isMaxima n xs = (xs !! n) > (xs !! (n-1)) && (xs !! n) > (xs !! (n+1))
              
+------------------------------------------------------------
+
+histogram :: [Integer] -> String
+histogram xs = makeHistogram xs'
+    where
+        xs' = group $ sort $ filter (\n -> n >= 0 && n <= 9) xs
+
+        makeHistogram :: [[Integer]] -> String
+        makeHistogram xs = show xs
+
+        maxLen xs' = max $ map length xs'
+
 ------------------------------------------------------------

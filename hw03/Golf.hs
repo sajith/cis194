@@ -27,22 +27,23 @@ histogram :: [Integer] -> String
 histogram xs = hist xs ++ "\n==========\n0123456789\n"
     where
         hist xs = intercalate "\n"
-            $ transpose $ map (\e -> histLine e (maxOccur xs)) $ times xs
+                $ transpose
+                $ map (\e -> histLine e (maxOccur xs)) $ times xs
 
-focus :: [Integer] -> [Integer]
-focus xs = filter (\n -> n >= 0 && n <= 9) xs
+        focus :: [Integer] -> [Integer]
+        focus = filter (\n -> n >= 0 && n <= 9)
 
-occur :: Integer -> [Integer] -> Int
-occur n xs = length $ filter (== n) xs
+        occur :: Integer -> [Integer] -> Int
+        occur n xs = length $ filter (== n) xs
 
-times :: [Integer] -> [Int]
-times xs = map (\n -> occur n (focus xs)) [0..9]
+        times :: [Integer] -> [Int]
+        times xs = map (\n -> occur n (focus xs)) [0..9]
 
-maxOccur :: [Integer] -> Int
-maxOccur xs = maximum $ times xs
+        maxOccur :: [Integer] -> Int
+        maxOccur xs = maximum $ times xs
 
-histLine :: Int -> Int -> String
-histLine rep max = (take (max - rep) $ repeat ' ') ++
-                         (take rep $ repeat '*')
+        histLine :: Int -> Int -> String
+        histLine rep max = replicate (max - rep) ' ' ++
+                           replicate rep '*'
 
 ------------------------------------------------------------

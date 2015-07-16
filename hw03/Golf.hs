@@ -31,7 +31,7 @@ histogram xs = hist xs ++ "\n==========\n0123456789\n"
                 $ map (\e -> histLine e (maxOccur xs)) $ times xs
 
         focus :: [Integer] -> [Integer]
-        focus = filter (\n -> n >= 0 && n <= 9)
+        focus = filter (`elem` [0..9])
 
         occur :: Integer -> [Integer] -> Int
         occur n xs = length $ filter (== n) xs

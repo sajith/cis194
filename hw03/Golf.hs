@@ -38,7 +38,7 @@ histogram xs = hist xs ++ "\n==========\n0123456789\n"
         occur :: Integer -> [Integer] -> Int
         occur n xs = length $ filter (== n) xs
 
-        -- make a list of occurances [0..9]
+        -- make a list of occurances of [0..9]
         times :: [Integer] -> [Int]
         times xs = map (\n -> occur n (focus xs)) [0..9]
 

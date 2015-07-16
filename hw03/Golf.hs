@@ -36,7 +36,7 @@ histogram xs = hist xs ++ "\n==========\n0123456789\n"
 
         -- count occurances of n in xs
         occur :: Integer -> [Integer] -> Int
-        occur n xs = length $ filter (== n) xs
+        occur n = length . filter (== n)
 
         -- make a list of occurances of [0..9]
         times :: [Integer] -> [Int]
@@ -44,7 +44,7 @@ histogram xs = hist xs ++ "\n==========\n0123456789\n"
 
         -- find the maximum number of occurances.
         maxOccur :: [Integer] -> Int
-        maxOccur xs = maximum $ times xs
+        maxOccur = maximum . times
 
         -- form a line in the (horizontal) histogram.
         histLine :: Int -> Int -> String

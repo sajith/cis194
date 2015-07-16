@@ -1,7 +1,7 @@
 
 module Golf where
 
-import Data.List (group, sort)
+import           Data.List (group, intercalate, sort, transpose)
 
 ------------------------------------------------------------
 
@@ -23,15 +23,20 @@ localMaxima _          = []
 
 ------------------------------------------------------------
 
--- TODO: this does not work.
+-- TODO: This still doesn't work; add spaces and invert histogram.
 histogram :: [Integer] -> String
-histogram xs = makeHistogram xs'
+histogram xs = hist xs ++ "\n==========\n0123456789\n"
     where
-        xs' = group $ sort $ filter (\n -> n >= 0 && n <= 9) xs
+        hist xs = intercalate "\n"
+            $ transpose [take n $ repeat '*' | n <- times xs]
 
-        makeHistogram :: [[Integer]] -> String
-        makeHistogram xs = show xs
+focus :: [Integer] -> [Integer]
+focus xs = filter (\n -> n >= 0 && n <= 9) xs
 
-        maxLen xs' = max $ map length xs'
+occur :: Integer -> [Integer] -> Int
+occur n xs = length $ filter (== n) xs
+
+times :: [Integer] -> [Int]
+times xs = map (\n -> occur n (focus xs)) [0..9]
 
 ------------------------------------------------------------

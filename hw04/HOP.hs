@@ -49,3 +49,10 @@ newHeight Leaf           = error "something terrible happened"
 
 ------------------------------------------------------------
 
+-- TODO: right answer, wrong solution.
+xor :: [Bool] -> Bool
+xor xs = if even $ length $ filter (==True) xs
+         then True
+         else False
+
+------------------------------------------------------------

@@ -31,5 +31,8 @@ data Tree a = Leaf
 foldTree :: [a] -> Tree a
 foldTree = undefined
 
+insert :: Tree a -> a -> Tree a
+insert = undefined
+
 ------------------------------------------------------------
 

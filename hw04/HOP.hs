@@ -22,3 +22,14 @@ fun2 = sum . filter even . takeWhile (>1) . iterate fn
 
 ------------------------------------------------------------
 
+-- TODO: I'm lost.
+
+data Tree a = Leaf
+            | Node Integer (Tree a) a (Tree a)
+            deriving (Eq, Show)
+
+foldTree :: [a] -> Tree a
+foldTree = undefined
+
+------------------------------------------------------------
+

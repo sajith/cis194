@@ -15,9 +15,10 @@ fun1 = product . map (\n -> if even n then n-2 else 1)
 -- fun2 n | even n    = n + fun2 (n `div` 2)
 --        | otherwise = fun2 (3 * n + 1)
 
--- TODO: could not figure out
 fun2 :: Integer -> Integer
-fun2 = undefined
+fun2 = sum . filter even . takeWhile (>1) . iterate fn
+    where
+        fn n = if even n then n `div` 2 else 3 * n + 1
 
 ------------------------------------------------------------
 

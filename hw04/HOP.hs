@@ -79,8 +79,8 @@ sieveSundaram' n = filter odd $ primes (2*n+2)
 
 -- After reading wikipedia
 
-sieveSundaram :: Integer -> [Integer]
-sieveSundaram n = map (\p -> 2 * p + 1) (focusList n)
+sieveSundaram'' :: Integer -> [Integer]
+sieveSundaram'' n = map (\p -> 2 * p + 1) (focusList n)
 
 focusList :: Integer -> [Integer]
 focusList n = filter (`sieve` n) (range n)

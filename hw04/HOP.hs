@@ -42,7 +42,7 @@ height Leaf           = 0
 height (Node h _ _ _) = h
 
 newHeight :: Tree a -> Integer
-newHeight (Node _ l _ r) = if (height l > height r)
+newHeight (Node _ l _ r) = if height l > height r
                            then height l + 1
                            else height r + 1
 newHeight Leaf           = error "something terrible happened"
@@ -54,3 +54,7 @@ xor = foldl (/=) False
 
 ------------------------------------------------------------
 
+map' :: (a -> b) -> [a] -> [b]
+map' fn = foldr ((:) . fn) []
+
+------------------------------------------------------------

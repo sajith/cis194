@@ -103,3 +103,18 @@ pairs n = [(i,j) | i <- [1..n],
                    i <= j ]
 
 ------------------------------------------------------------
+
+sieveSundaram :: Integer -> [Integer]
+sieveSundaram n = map (\p -> 2 * p + 1) $ filter (`sieve` n) [1..n]
+    where
+        sieve :: Integer -> Integer -> Bool
+        sieve m n = notElem m $ subList n
+
+        subList :: Integer -> [Integer]
+        subList n = map (\(i, j) -> i + j + 2 * i * j)
+                    $ [(i,j) | i <- [1..n],
+                               j <- [1..n],
+                               i + j + 2 * i *j <= n,
+                               i <= j ]
+
+------------------------------------------------------------

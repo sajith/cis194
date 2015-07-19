@@ -27,15 +27,15 @@ data Tree a = Leaf
             deriving (Eq, Show)
 
 foldTree :: [a] -> Tree a
-foldTree = foldr insert Leaf
+foldTree = foldr add Leaf
 
-insert :: a -> Tree a -> Tree a
-insert a Leaf                  = Node 0 Leaf a Leaf
-insert a (Node h Leaf a' Leaf) = Node (h+1) (Node 0 Leaf a Leaf) a' Leaf
-insert a (Node h Leaf a' r)    = Node h (Node 0 Leaf a Leaf) a' r
-insert a n@(Node h l a' r)     = if height l == h - 1
-                                 then Node (newHeight n) l a' (insert a r)
-                                 else Node (newHeight n) (insert a l) a' r
+add :: a -> Tree a -> Tree a
+add a Leaf                  = Node 0 Leaf a Leaf
+add a (Node h Leaf a' Leaf) = Node (h+1) (Node 0 Leaf a Leaf) a' Leaf
+add a (Node h Leaf a' r)    = Node h (Node 0 Leaf a Leaf) a' r
+add a n@(Node h l a' r)     = if height l == h - 1
+                              then Node (newHeight n) l a' (add a r)
+                              else Node (newHeight n) (add a l) a' r
 
 height :: Tree a -> Integer
 height Leaf           = 0

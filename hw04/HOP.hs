@@ -76,3 +76,30 @@ sieveSundaram' n = filter odd $ primes (2*n+2)
         isPrime n = all (\m -> n `mod` m /= 0) [2..n `div` 2]
 
 ------------------------------------------------------------
+
+-- After reading wikipedia
+
+sieveSundaram :: Integer -> [Integer]
+sieveSundaram n = map (\p -> 2 * p + 1) (focusList n)
+
+focusList :: Integer -> [Integer]
+focusList n = filter (`sieve` n) (range n)
+
+range :: Integer -> [Integer]
+range n = [1..n]
+
+sieve :: Integer -> Integer -> Bool
+sieve m n = notElem m $ eliminationList n
+
+eliminationList :: Integer -> [Integer]
+eliminationList n = map (\(i, j) -> i + j + 2*i*j) $ pairs n
+
+pairs :: Integer -> [(Integer, Integer)]
+pairs n = [(i,j) | i <- [1..n],
+                   j <- [1..n],
+                   i + j + 2*i*j <= n,
+                   1 <= i,
+                   1 <= j,
+                   i <= j ]
+
+------------------------------------------------------------

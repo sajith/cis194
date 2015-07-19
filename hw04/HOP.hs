@@ -64,3 +64,15 @@ myFoldl fn i xs = foldr (flip fn) i xs
 
 ------------------------------------------------------------
 
+-- Before reading wikipedia.
+
+sieveSundaram :: Integer -> [Integer]
+sieveSundaram n = filter odd $ primes (2*n+2)
+    where
+        primes :: Integer -> [Integer]
+        primes n = filter isPrime [1..n]
+
+        isPrime :: Integer -> Bool
+        isPrime n = all (\m -> n `mod` m /= 0) [2..n `div` 2]
+
+------------------------------------------------------------

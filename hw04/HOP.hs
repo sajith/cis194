@@ -66,8 +66,8 @@ myFoldl fn = foldr (flip fn)
 
 -- Before reading wikipedia.
 
-sieveSundaram :: Integer -> [Integer]
-sieveSundaram n = filter odd $ primes (2*n+2)
+sieveSundaram' :: Integer -> [Integer]
+sieveSundaram' n = filter odd $ primes (2*n+2)
     where
         primes :: Integer -> [Integer]
         primes n = filter isPrime [2..n]

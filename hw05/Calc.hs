@@ -47,7 +47,7 @@ instance Expr Integer where
 
 instance Expr Bool where
     lit n = n > 0
-    add = (||)
-    mul = (&&)
+    add   = (||)
+    mul   = (&&)
 
 ------------------------------------------------------------

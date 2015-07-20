@@ -61,8 +61,8 @@ instance Expr MinMax where
     mul = max
 
 instance Expr Mod7 where
-    lit = undefined
-    add = undefined
-    mul = undefined
+    lit n                 = Mod7 (n `mod` 7)
+    add (Mod7 m) (Mod7 n) = Mod7 ((m + n) `mod` 7)
+    mul (Mod7 m) (Mod7 n) = Mod7 ((m * n) `mod` 7)
 
 ------------------------------------------------------------

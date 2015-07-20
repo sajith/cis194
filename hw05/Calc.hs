@@ -46,7 +46,7 @@ instance Expr Integer where
 ------------------------------------------------------------
 
 instance Expr Bool where
-    lit n = if n > 0 then True else False
+    lit n = n > 0
     add = (||)
     mul = (&&)
 

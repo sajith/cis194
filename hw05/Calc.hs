@@ -51,3 +51,12 @@ instance Expr Bool where
     mul   = (&&)
 
 ------------------------------------------------------------
+
+newtype MinMax = MinMax Integer deriving (Eq, Show, Ord)
+
+instance Expr MinMax where
+    lit = MinMax
+    add = min
+    mul = max
+
+------------------------------------------------------------

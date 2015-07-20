@@ -21,15 +21,15 @@ evalStr str = eval <$> parseExp Lit Add Mul str
 
 class Expr a where
     lit :: Integer -> a
-    add :: Integer -> Integer -> a
-    mul :: Integer -> Integer -> a
+    add :: a -> a -> a
+    mul :: a -> a -> a
 
 ------------------------------------------------------------
 
 instance Expr ExprT where
-    lit x   = Lit x
-    add x y = Add (Lit x) (Lit y)
-    mul x y = Mul (Lit x) (Lit y)
+    lit = Lit
+    add = Add
+    mul = Mul
 
 ------------------------------------------------------------
 

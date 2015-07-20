@@ -53,10 +53,16 @@ instance Expr Bool where
 ------------------------------------------------------------
 
 newtype MinMax = MinMax Integer deriving (Eq, Show, Ord)
+newtype Mod7   = Mod7 Integer deriving (Eq, Show, Ord)
 
 instance Expr MinMax where
     lit = MinMax
     add = min
     mul = max
+
+instance Expr Mod7 where
+    lit = undefined
+    add = undefined
+    mul = undefined
 
 ------------------------------------------------------------

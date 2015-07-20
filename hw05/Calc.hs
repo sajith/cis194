@@ -44,3 +44,10 @@ instance Expr Integer where
     mul = (*)
 
 ------------------------------------------------------------
+
+instance Expr Bool where
+    lit n = if n > 0 then True else False
+    add = (||)
+    mul = (&&)
+
+------------------------------------------------------------

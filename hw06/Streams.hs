@@ -15,3 +15,9 @@ streamToList (Stream a)    = [a]
 streamToList (Cons a rest) = a : streamToList rest
 
 ------------------------------------------------------------
+
+streamRepeat :: a -> Stream a
+streamRepeat s = Cons s (streamRepeat s)
+
+------------------------------------------------------------
+

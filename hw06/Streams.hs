@@ -26,3 +26,9 @@ streamMap f (Stream a)    = Stream (f a)
 streamMap f (Cons a rest) = Cons (f a) (streamMap f rest)
 
 ------------------------------------------------------------
+
+-- TODO: is this even correct?
+streamFromSeed :: (a -> a) -> a -> Stream a
+streamFromSeed f v = Cons v (streamFromSeed f (f v))
+
+------------------------------------------------------------

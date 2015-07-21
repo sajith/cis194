@@ -3,15 +3,15 @@
 
 module Compiler where
 
-import qualified Calc    as C
-import qualified Parser  as P
-import qualified StackVM as S
+import           Calc
+import           Parser
+import           StackVM
 
-instance C.Expr S.Program where
-    lit x   = [S.PushI x]
-    add x y = x ++ y ++ [S.Add]
-    mul x y = x ++ y ++ [S.Mul]
+instance Expr Program where
+    lit x   = [PushI x]
+    add x y = x ++ y ++ [Add]
+    mul x y = x ++ y ++ [Mul]
 
-compile :: String -> Maybe S.Program
-compile = P.parseExp C.lit C.add C.mul
+compile :: String -> Maybe Program
+compile = parseExp lit add mul
 

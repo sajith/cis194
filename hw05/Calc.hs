@@ -104,6 +104,6 @@ withVars vs exp = exp $ M.fromList vs
 
 -- withVars [("x", 6)] $ add (lit 3) (var "x") == Just 9
 -- withVars [("x", 6)] $ add (lit 3) (var "y") == Nothing
--- withVars [("x", 6), ("y", 3)] $ mul (var "x") (add (var "y") (var "x"))
+-- withVars [("x", 6), ("y", 3)] $ mul (var "x") (add (var "y") (var "x")) == Just 54
 
 ------------------------------------------------------------

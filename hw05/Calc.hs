@@ -1,9 +1,13 @@
+{-# LANGUAGE FlexibleInstances #-}
+
 module Calc where
 
 import           ExprT               (ExprT (..))
 import           Parser              (parseExp)
 
 import           Control.Applicative ((<$>))
+
+import           Data.Map            as M
 
 ------------------------------------------------------------
 
@@ -69,5 +73,18 @@ instance Expr Mod7 where
     lit n                 = Mod7 (n `mod` 7)
     add (Mod7 m) (Mod7 n) = Mod7 ((m + n) `mod` 7)
     mul (Mod7 m) (Mod7 n) = Mod7 ((m * n) `mod` 7)
+
+------------------------------------------------------------
+
+class HasVars a where
+    var :: String -> a
+
+instance HasVars (M.Map String Integer -> Maybe Integer) where
+    var = M.lookup
+
+instance Expr (M.Map String Integer -> Maybe Integer) where
+    lit = undefined
+    add = undefined
+    mul = undefined
 
 ------------------------------------------------------------

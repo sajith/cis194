@@ -7,7 +7,7 @@ import           Parser              (parseExp)
 
 import           Control.Applicative ((<$>))
 
-import           Data.Map            as M
+import qualified Data.Map            as M
 
 ------------------------------------------------------------
 

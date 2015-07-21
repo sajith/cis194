@@ -82,19 +82,15 @@ class HasVars a where
 instance HasVars (M.Map String Integer -> Maybe Integer) where
     var = M.lookup
 
-madd :: Maybe Integer -> Maybe Integer -> Maybe Integer
-madd (Just x) (Just y) = Just (x+y)
-madd Nothing _         = Nothing
-madd _       Nothing   = Nothing
-
-mmul :: Maybe Integer -> Maybe Integer -> Maybe Integer
-mmul (Just x) (Just y) = Just (x*y)
-mmul Nothing _         = Nothing
-mmul _       Nothing   = Nothing
+-- TODO: what's a better way to write this?
+moper :: (Num a) => (a -> a -> a) -> Maybe a -> Maybe a -> Maybe a
+moper op (Just x) (Just y) = Just (x+y)
+moper _  Nothing _         = Nothing
+moper _  _       Nothing   = Nothing
 
 instance Expr (M.Map String Integer -> Maybe Integer) where
     lit = const . Just
-    add e1 e2 m = madd (e1 m) (e2 m)
-    mul e1 e2 m = mmul (e1 m) (e2 m)
+    add e1 e2 m = moper (+) (e1 m) (e2 m)
+    mul e1 e2 m = moper (*) (e1 m) (e2 m)
 
 ------------------------------------------------------------

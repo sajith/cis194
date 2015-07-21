@@ -84,7 +84,7 @@ instance HasVars (M.Map String Integer -> Maybe Integer) where
 
 -- TODO: what's a better way to write this?
 moper :: (Num a) => (a -> a -> a) -> Maybe a -> Maybe a -> Maybe a
-moper op (Just x) (Just y) = Just (x+y)
+moper op (Just x) (Just y) = Just (x `op` y)
 moper _  Nothing _         = Nothing
 moper _  _       Nothing   = Nothing
 

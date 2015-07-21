@@ -32,3 +32,8 @@ streamFromSeed :: (a -> a) -> a -> Stream a
 streamFromSeed f v = Cons v (streamFromSeed f (f v))
 
 ------------------------------------------------------------
+
+nats :: Stream Integer
+nats = streamFromSeed (+1) 0
+
+------------------------------------------------------------

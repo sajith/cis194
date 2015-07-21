@@ -21,3 +21,8 @@ streamRepeat s = Cons s (streamRepeat s)
 
 ------------------------------------------------------------
 
+streamMap :: (a -> b) -> Stream a -> Stream b
+streamMap f (Stream a)    = Stream (f a)
+streamMap f (Cons a rest) = Cons (f a) (streamMap f rest)
+
+------------------------------------------------------------

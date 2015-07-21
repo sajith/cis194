@@ -37,3 +37,11 @@ nats :: Stream Integer
 nats = streamFromSeed (+1) 0
 
 ------------------------------------------------------------
+
+ruler :: Stream Integer
+ruler = streamMap (\m -> pow2 m (m `div` 2)) (streamFromSeed (+1) 1)
+    where
+        pow2 :: Integer -> Integer -> Integer
+        pow2 m n = if m `mod` (2^n) == 0 then n else pow2 m (n-1)
+
+------------------------------------------------------------

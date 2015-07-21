@@ -82,9 +82,12 @@ class HasVars a where
 instance HasVars (M.Map String Integer -> Maybe Integer) where
     var = M.lookup
 
+madd = undefined
+mmul = undefined
+
 instance Expr (M.Map String Integer -> Maybe Integer) where
-    lit = undefined
-    add = undefined
-    mul = undefined
+    lit = const . Just
+    add e1 e2 m = madd (e1 m) (e2 m)
+    mul e1 e2 m = mmul (e1 m) (e2 m)
 
 ------------------------------------------------------------

@@ -82,8 +82,15 @@ class HasVars a where
 instance HasVars (M.Map String Integer -> Maybe Integer) where
     var = M.lookup
 
-madd = undefined
-mmul = undefined
+madd :: Maybe Integer -> Maybe Integer -> Maybe Integer
+madd (Just x) (Just y) = Just (x+y)
+madd Nothing _         = Nothing
+madd _       Nothing   = Nothing
+
+mmul :: Maybe Integer -> Maybe Integer -> Maybe Integer
+mmul (Just x) (Just y) = Just (x*y)
+mmul Nothing _         = Nothing
+mmul _       Nothing   = Nothing
 
 instance Expr (M.Map String Integer -> Maybe Integer) where
     lit = const . Just

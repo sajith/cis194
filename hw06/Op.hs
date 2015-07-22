@@ -23,8 +23,8 @@ instance Num (Stream Integer) where
 
     fromInteger i = Cons i (streamRepeat 0)
 
-    abs xs = streamMap abs xs
-    negate xs = streamMap negate xs
-    signum xs = streamMap signum xs
+    abs = streamMap abs
+    negate = streamMap negate
+    signum = streamMap signum
 
 ------------------------------------------------------------

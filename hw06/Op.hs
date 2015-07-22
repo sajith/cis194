@@ -18,12 +18,7 @@ streamOp op (Stream x) (Stream y)   = Stream (x `op` y)
 ------------------------------------------------------------
 
 instance Num (Stream Integer) where
-    -- (Cons x xs) + (Cons y ys) = Cons (x + y) (xs + ys)
-    -- (Stream x) + (Stream y)   = Stream (x + y)
     (+) = streamOp (+)
-
-    -- (Cons x xs) * (Cons y ys) = Cons (x * y) (xs * ys)
-    -- (Stream x) * (Stream y) = Stream (x * y)
     (*) = streamOp (*)
 
     fromInteger i = Cons i (streamRepeat 0)

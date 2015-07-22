@@ -11,7 +11,7 @@ x = Cons 0 (Cons 1 (streamRepeat 0))
 
 ------------------------------------------------------------
 
--- streamOp :: (a -> a -> a) -> Stream a -> Stream a -> Stream a
+streamOp :: (t -> t1 -> a) -> Stream t -> Stream t1 -> Stream a
 streamOp op (Cons x xs) (Cons y ys) = Cons (x `op` y) (streamOp op xs ys)
 streamOp op (Stream x) (Stream y)   = Stream (x `op` y)
 

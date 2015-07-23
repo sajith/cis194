@@ -1,3 +1,4 @@
+{-# LANGUAGE FlexibleContexts  #-}
 {-# LANGUAGE FlexibleInstances #-}
 
 module Op where
@@ -50,8 +51,14 @@ instance Num (Stream Integer) where
 ------------------------------------------------------------
 
 instance Fractional (Stream Integer) where
-    (/)          = undefined
+    (/)          = streamDiv
     recip        = undefined
     fromRational = undefined
 
+streamDiv :: (Num (Stream a), Integral a)
+             => Stream a -> Stream a -> Stream a
+streamDiv (Cons x xs) (Cons y ys) = q
+    where q = Cons (x `div` y) (streamMap (`div` y) (xs - q*ys))
+
 ------------------------------------------------------------
+

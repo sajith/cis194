@@ -52,8 +52,8 @@ instance Num (Stream Integer) where
 
 instance Fractional (Stream Integer) where
     (/)          = streamDiv
-    recip        = undefined
-    fromRational = undefined
+    recip        = (/) 1     -- TODO: check
+    fromRational = undefined -- TODO: later, not necessary here.
 
 streamDiv :: (Num (Stream a), Integral a)
              => Stream a -> Stream a -> Stream a

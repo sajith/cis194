@@ -17,6 +17,7 @@ streamOp op (Stream x) (Stream y)   = Stream (x `op` y)
 
 streamMul (Cons x xs) yys@(Cons y ys) =
     Cons (x*y) (streamMap (x*) ys + (xs * yys))
+streamMul (Stream x) (Stream y)       = Stream (x * y)
 
 ------------------------------------------------------------
 

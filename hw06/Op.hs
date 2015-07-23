@@ -48,3 +48,10 @@ instance Num (Stream Integer) where
 --}
 
 ------------------------------------------------------------
+
+instance Fractional (Stream Integer) where
+    (/)          = undefined
+    recip        = undefined
+    fromRational = undefined
+
+------------------------------------------------------------

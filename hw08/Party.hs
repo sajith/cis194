@@ -23,6 +23,7 @@ moreFun a@(GL ls1 f1) b@(GL ls2 f2) = if f1 > f2 then a else b
 
 ------------------------------------------------------------
 
+-- TODO: Recheck.  Not sure if this is correct.
 treeFold :: (a -> [b] -> b) -> Tree a -> b
 treeFold fn (Node a ns) = f a (map (treeFold fn) ns)
 

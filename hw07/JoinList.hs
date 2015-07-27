@@ -85,3 +85,12 @@ dropJ n (Append m Empty ys)    = Append m Empty (dropJ n ys)
 dropJ n (Append m xs ys)       = Append m (dropJ n xs) ys
 
 ------------------------------------------------------------
+
+takeJ :: (Sized b, Monoid b) =>
+         Int -> JoinList b a -> JoinList b a
+takeJ n _ | n <= 0       = Empty
+takeJ _ Empty            = Empty
+takeJ 1 (Single b a)     = Single b a
+takeJ n (Append m xs ys) = undefined
+
+------------------------------------------------------------

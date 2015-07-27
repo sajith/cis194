@@ -3,6 +3,7 @@
 module JoinList where
 
 import           Data.Monoid
+import           Scrabble
 import           Sized
 
 ------------------------------------------------------------
@@ -99,5 +100,10 @@ takeJ n (Append m xs ys) | n <= xsl       = takeJ n xs
     where
         xsl = lengthJ xs
         ysl = lengthJ ys
+
+------------------------------------------------------------
+
+scoreLine :: String -> JoinList Score String
+scoreLine = undefined
 
 ------------------------------------------------------------

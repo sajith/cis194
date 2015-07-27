@@ -103,7 +103,8 @@ takeJ n (Append m xs ys) | n <= xsl       = takeJ n xs
 
 ------------------------------------------------------------
 
+-- TODO: this will not work as in the example...
 scoreLine :: String -> JoinList Score String
-scoreLine = undefined
+scoreLine s = Single (scoreString s) s
 
 ------------------------------------------------------------

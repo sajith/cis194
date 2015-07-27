@@ -1,3 +1,4 @@
+{-# LANGUAGE FlexibleInstances #-}
 
 module JoinList where
 
@@ -46,5 +47,27 @@ indexJ i (Append _ xs ys) = if i < n
         subl Empty            acc = acc
         subl (Single _ _)     acc = acc + 1
         subl (Append _ xs ys) acc = acc + subl xs 0 + subl ys 0
+
+
+-- TODO: Without this dummy instance, compiler complains when trying
+-- to use indexJ on 'Product' structures.  (But this doesn't seem to
+-- be actually used!)  I don't understand why.
+instance Sized (Product a0) where
+    size = undefined
+
+------------------------------------------------------------
+
+-- To test indexJ, these functions are given:
+
+(!!?) :: [a] -> Int -> Maybe a
+(!!?) [] _         = Nothing
+(!!?) _  i | i < 0 = Nothing
+(!!?) (x:_) 0      = Just x
+(!!?) (_:xs) i     = xs !!? (i-1)
+
+jlToList :: JoinList m a -> [a]
+jlToList Empty            = []
+jlToList (Single _ a)     = [a]
+jlToList (Append _ xs ys) = jlToList xs ++ jlToList ys
 
 ------------------------------------------------------------

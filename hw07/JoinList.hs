@@ -108,3 +108,7 @@ scoreLine :: String -> JoinList Score String
 scoreLine s = Single (scoreString s) s
 
 ------------------------------------------------------------
+
+-- TODO: Do problem 4. Also revisit the other TODO items above.
+
+------------------------------------------------------------

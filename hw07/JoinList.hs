@@ -18,7 +18,7 @@ data JoinList m a = Empty
 ------------------------------------------------------------
 
 tag :: Monoid m => JoinList m a -> m
-tag Empty          = error "empty"
+tag Empty          = mempty
 tag (Single m _)   = m
 tag (Append m _ _) = m
 

@@ -38,16 +38,15 @@ indexJ i (Append _ xs ys) = if i < n
                             else indexJ (i - n) ys
     where
         n :: Int
-        n = len xs
+        n = lengthJ xs
 
-        len :: (Sized b, Monoid b) => JoinList b a -> Int
-        len xs = subl xs 0
-
+lengthJ :: (Sized b, Monoid b) => JoinList b a -> Int
+lengthJ xs = subl xs 0
+    where
         subl :: (Sized b, Monoid b) => JoinList b a -> Int -> Int
         subl Empty            acc = acc
         subl (Single _ _)     acc = acc + 1
         subl (Append _ xs ys) acc = acc + subl xs 0 + subl ys 0
-
 
 -- TODO: Without this dummy instance, compiler complains when trying
 -- to use indexJ on 'Product' structures.  (But this doesn't seem to

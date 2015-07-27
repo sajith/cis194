@@ -2,7 +2,7 @@
 
 module Scrabble where
 
-import           Data.Map    as M
+import qualified Data.Map    as M
 import           Data.Monoid
 
 ------------------------------------------------------------
@@ -35,6 +35,6 @@ scores = M.fromList [('A', 1), ('B', 3), ('C', 3), ('D', 2),
 ------------------------------------------------------------
 
 scoreString :: String -> Score
-scoreString = read
+scoreString = mconcat . map score
 
 ------------------------------------------------------------

@@ -13,7 +13,9 @@ data JoinList m a = Empty
 ------------------------------------------------------------
 
 (+++) :: Monoid m => JoinList m a -> JoinList m a -> JoinList m a
-(+++) = undefined
+(+++) Empty xs = xs
+(+++) xs Empty = xs
+(+++) xs ys    = Append (mappend (tag xs) (tag ys)) xs ys
 
 ------------------------------------------------------------
 

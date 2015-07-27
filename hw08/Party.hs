@@ -16,3 +16,8 @@ instance Monoid GuestList where
     mappend (GL l1 f1) (GL l2 f2) = GL (l1 ++ l2) (f1 + f2)
 
 ------------------------------------------------------------
+
+moreFun :: GuestList -> GuestList -> GuestList
+moreFun a@(GL ls1 f1) b@(GL ls2 f2) = if f1 > f2 then a else b
+
+------------------------------------------------------------

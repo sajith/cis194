@@ -28,3 +28,9 @@ treeFold :: (a -> [b] -> b) -> Tree a -> b
 treeFold fn (Node a ns) = f a (map (treeFold fn) ns)
 
 ------------------------------------------------------------
+
+-- TODO: problem statement parse failure.
+combineGLs :: Employee -> [GuestList] -> GuestList
+combineGLs e gs = undefined
+
+------------------------------------------------------------

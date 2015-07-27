@@ -2,6 +2,7 @@
 
 module Scrabble where
 
+import           Data.Char   (toUpper)
 import qualified Data.Map    as M
 import           Data.Monoid
 
@@ -19,7 +20,7 @@ instance Monoid Score where
 ------------------------------------------------------------
 
 score :: Char -> Score
-score c = case M.lookup c scores of
+score c = case M.lookup (toUpper c) scores of
             Just i  -> Score i
             Nothing -> Score 0
 

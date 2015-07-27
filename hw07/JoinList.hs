@@ -73,13 +73,14 @@ jlToList (Append _ xs ys) = jlToList xs ++ jlToList ys
 ------------------------------------------------------------
 
 -- drop first n elements from xs
+-- TODO: this is wrong; this drops just 1 item for n > 1 & xs == Append m a b
 dropJ :: (Sized b, Monoid b) =>
          Int -> JoinList b a -> JoinList b a
 dropJ 0 xs                     = xs
 dropJ n xs | n < 0             = xs
 dropJ _ Empty                  = Empty
-dropJ 1 (Single _ _)           = Empty
-dropJ n (Append m Empty Empty) = Empty
+dropJ n (Single _ _)           = Empty
+dropJ _ (Append _ Empty Empty) = Empty
 dropJ n (Append m Empty ys)    = Append m Empty (dropJ n ys)
 dropJ n (Append m xs ys)       = Append m (dropJ n xs) ys
 

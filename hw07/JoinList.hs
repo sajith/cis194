@@ -85,11 +85,19 @@ dropJ n (Append m xs ys)       = Append m (dropJ n xs) ys
 
 ------------------------------------------------------------
 
+-- TODO: this also is wrong, just the way dropJ is wrong...
 takeJ :: (Sized b, Monoid b) =>
          Int -> JoinList b a -> JoinList b a
 takeJ n _ | n <= 0       = Empty
 takeJ _ Empty            = Empty
 takeJ 1 (Single b a)     = Single b a
-takeJ n (Append m xs ys) = undefined
+takeJ n (Append m xs ys) | n <= xsl       = takeJ n xs
+                         | n >= xsl + ysl = Append m xs ys
+                         | otherwise      = Append m
+                                            (takeJ xsl xs)
+                                            (takeJ (n - xsl) ys)
+    where
+        xsl = lengthJ xs
+        ysl = lengthJ ys
 
 ------------------------------------------------------------

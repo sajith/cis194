@@ -41,3 +41,7 @@ nextLevel e gs = undefined
 
 ------------------------------------------------------------
 
+maxFun :: Tree Employee -> GuestList
+maxFun t = undefined
+
+------------------------------------------------------------

@@ -46,6 +46,10 @@ maxFun t = undefined
 
 ------------------------------------------------------------
 
+instance Read GuestList
+
+------------------------------------------------------------
+
 main :: IO ()
 main = do
     file <- readFile "company.txt"

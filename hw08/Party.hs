@@ -53,9 +53,9 @@ main :: IO ()
 main = do
     file <- readFile "company.txt"
     let guestList = makeGuestList file
-    putStrLn$ show guestList
+    print guestList
 
 makeGuestList :: String -> Tree Employee
-makeGuestList s = read s
+makeGuestList = read
 
 ------------------------------------------------------------

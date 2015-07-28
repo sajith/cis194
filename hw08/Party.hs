@@ -53,9 +53,12 @@ main :: IO ()
 main = do
     file <- readFile "company.txt"
     let guestList = makeGuestList file
-    print guestList
+    print $ prettify $ maxFun guestList
 
 makeGuestList :: String -> Tree Employee
 makeGuestList = read
+
+prettify :: GuestList -> String
+prettify = show
 
 ------------------------------------------------------------

@@ -45,7 +45,7 @@ nextLevel e gs = (withBoss, withoutBoss)
 ------------------------------------------------------------
 
 maxFun :: Tree Employee -> GuestList
-maxFun t = uncurry moreFun $ treeFold nextLevel t
+maxFun = uncurry moreFun . treeFold nextLevel
 
 ------------------------------------------------------------
 

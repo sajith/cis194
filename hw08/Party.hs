@@ -40,7 +40,7 @@ nextLevel :: Employee -> [(GuestList, GuestList)] -> (GuestList, GuestList)
 nextLevel e gs = (withBoss, withoutBoss)
     where
         withBoss    = glCons e $ mconcat $ snd $ unzip gs
-        withoutBoss = mconcat $ map (\(x,y) -> moreFun x y) gs
+        withoutBoss = mconcat $ map (uncurry moreFun) gs
 
 ------------------------------------------------------------
 

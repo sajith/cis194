@@ -50,9 +50,9 @@ main :: IO ()
 main = do
     file <- readFile "company.txt"
     let guestList = makeGuestList file
-    return ()
+    putStrLn$ show guestList
 
 makeGuestList :: String -> GuestList
-makeGuestList s = undefined
+makeGuestList s = read s
 
 ------------------------------------------------------------

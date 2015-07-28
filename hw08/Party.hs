@@ -34,3 +34,10 @@ combineGLs :: Employee -> [GuestList] -> GuestList
 combineGLs e gs = undefined
 
 ------------------------------------------------------------
+
+-- TODO: problem statement parse failure.
+nextLevel :: Employee -> [(GuestList, GuestList)] -> (GuestList, GuestList)
+nextLevel e gs = undefined
+
+------------------------------------------------------------
+

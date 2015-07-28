@@ -46,17 +46,13 @@ maxFun t = undefined
 
 ------------------------------------------------------------
 
-instance Read GuestList
-
-------------------------------------------------------------
-
 main :: IO ()
 main = do
     file <- readFile "company.txt"
     let guestList = makeGuestList file
     putStrLn$ show guestList
 
-makeGuestList :: String -> GuestList
+makeGuestList :: String -> Tree Employee
 makeGuestList s = read s
 
 ------------------------------------------------------------

@@ -45,3 +45,14 @@ maxFun :: Tree Employee -> GuestList
 maxFun t = undefined
 
 ------------------------------------------------------------
+
+main :: IO ()
+main = do
+    file <- readFile "company.txt"
+    let guestList = makeGuestList file
+    return ()
+
+makeGuestList :: String -> GuestList
+makeGuestList s = undefined
+
+------------------------------------------------------------

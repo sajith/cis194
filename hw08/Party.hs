@@ -37,7 +37,10 @@ combineGLs e gs = undefined
 
 -- TODO: problem statement parse failure.
 nextLevel :: Employee -> [(GuestList, GuestList)] -> (GuestList, GuestList)
-nextLevel e gs = undefined
+nextLevel e gs = (withBoss, withoutBoss)
+    where
+        withBoss    = glCons e $ mconcat $ snd $ unzip gs
+        withoutBoss = mconcat $ map (\(x,y) -> moreFun x y) gs
 
 ------------------------------------------------------------
 

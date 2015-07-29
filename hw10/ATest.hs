@@ -16,11 +16,11 @@ instance Functor Parser where
 
 instance Applicative Parser where
     pure a = Parser (\s -> Just (a, s))
-    (<*>) (Parser f) b@(Parser p) =
+    (<*>) (Parser f) p2@(Parser p) =
         Parser $ \s ->
             case f s of
                 Nothing       -> Nothing
-                Just (f', s') -> runParser (fmap f' b) s'
+                Just (f', s') -> runParser (fmap f' p2) s'
 
 -- instance Monad Parser where
 --     (>>=) = undefined

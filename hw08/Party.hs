@@ -32,12 +32,6 @@ treeFold fn (Node a ns) = fn a (map (treeFold fn) ns)
 ------------------------------------------------------------
 
 -- TODO: problem statement parse failure.
-combineGLs :: Employee -> [GuestList] -> GuestList
-combineGLs e gs = undefined
-
-------------------------------------------------------------
-
--- TODO: problem statement parse failure.
 nextLevel :: Employee -> [(GuestList, GuestList)] -> (GuestList, GuestList)
 nextLevel e gs = (withBoss, withoutBoss)
     where

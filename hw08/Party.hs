@@ -54,11 +54,7 @@ maxFun = uncurry moreFun . treeFold nextLevel
 main :: IO ()
 main = do
     file <- readFile "company.txt"
-    let guestList = makeGuestList file
-    putStr $ prettify $ maxFun guestList
-
-makeGuestList :: String -> Tree Employee
-makeGuestList = read
+    putStr $ prettify $ maxFun $ read file
 
 prettify :: GuestList -> String
 prettify (GL es f) = "Total party fun: " ++ show f ++ "\n" ++

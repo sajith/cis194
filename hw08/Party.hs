@@ -50,8 +50,7 @@ main = do
     putStr $ prettify $ maxFun $ read file
 
 prettify :: GuestList -> String
-prettify (GL es f) = "Total party fun: " ++ show f ++ "\n" ++
-                     "People:\n" ++
+prettify (GL es f) = "Total fun: " ++ show f ++ "\n" ++
                      intercalate "\n" (sort $ map empName es) ++
                      "\n"
 

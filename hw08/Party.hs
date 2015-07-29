@@ -63,6 +63,6 @@ makeGuestList = read
 prettify :: GuestList -> String
 prettify (GL es f) = "Total party fun: " ++ show f ++ "\n" ++
                      "People:\n" ++
-                     intercalate "\n" (sort (map (\e -> empName e) es))
+                     intercalate "\n" (sort $ map empName es)
 
 ------------------------------------------------------------

@@ -14,9 +14,10 @@ conv f (x, y) = (f x, y)
 instance Functor Parser where
     fmap f (Parser p) = Parser (fmap (conv f) . p)
 
+-- TODO: Correct?
 instance Applicative Parser where
     pure a = Parser (\s -> Just (a, s))
-    (<*>) (Parser f) p2@(Parser p) =
+    (<*>) p1@(Parser f) p2@(Parser p) =
         Parser $ \s ->
             case f s of
                 Nothing       -> Nothing

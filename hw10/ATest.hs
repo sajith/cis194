@@ -12,7 +12,7 @@ conv :: (a -> b) -> (a, c) -> (b, c)
 conv f (x, y) = (f x, y)
 
 instance Functor Parser where
-    fmap f (Parser p) = Parser (\s -> fmap (conv f) (p s))
+    fmap f (Parser p) = Parser (fmap (conv f) . p)
 
 -- instance Applicative Parser where
 --     pure = pure

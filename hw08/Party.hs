@@ -5,6 +5,8 @@ import           Data.Monoid
 import           Data.Tree
 import           Employee
 
+import           Data.List   (intercalate, sort)
+
 ------------------------------------------------------------
 
 glCons :: Employee -> GuestList -> GuestList
@@ -53,12 +55,14 @@ main :: IO ()
 main = do
     file <- readFile "company.txt"
     let guestList = makeGuestList file
-    print $ prettify $ maxFun guestList
+    putStr $ prettify $ maxFun guestList
 
 makeGuestList :: String -> Tree Employee
 makeGuestList = read
 
 prettify :: GuestList -> String
-prettify = show
+prettify (GL es f) = "Total party fun: " ++ show f ++ "\n" ++
+                     "People:\n" ++
+                     intercalate "\n" (sort (map (\e -> empName e) es))
 
 ------------------------------------------------------------

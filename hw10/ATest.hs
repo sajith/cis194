@@ -52,3 +52,22 @@ parsePhone = Parser phone
 -- Employee <$> parseName <*> parsePhone
 
 ------------------------------------------------------------
+
+abParser :: Parser (Char, Char)
+abParser = (,) <$> char 'a' <*> char 'b'
+
+-- tests:
+-- runParser abParser "abcdef" == Just (('a','b'),"cdef")
+-- runParser abParser "aebcdf" == Nothing
+
+------------------------------------------------------------
+
+abParser_ :: Parser ()
+abParser_ = const () <$> abParser
+
+-- tests:
+-- runParser abParser_ "abcdef" == Just ((),"cdef")
+-- runParser abParser_ "aebcdf" == Nothing
+
+------------------------------------------------------------
+

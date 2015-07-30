@@ -71,3 +71,12 @@ abParser_ = const () <$> abParser
 
 ------------------------------------------------------------
 
+intPair :: Parser [Integer]
+intPair = (\i1 _ i2 -> [i1,i2]) <$> posInt <*> char ' ' <*> posInt
+
+-- tests:
+-- runParser intPair "12 34" == Just ([12,34],"")
+-- runParser intPair "1234" == Nothing
+
+------------------------------------------------------------
+

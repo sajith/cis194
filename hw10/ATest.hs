@@ -28,3 +28,23 @@ instance Applicative Parser where
 --     return = undefined
 
 ------------------------------------------------------------
+
+-- for testing.
+
+type Name = String
+
+data Employee = Employee { name :: Name
+                         , phone :: String }
+                deriving (Show)
+
+-- TODO: write this
+parseName :: Parser Name
+parseName = undefined
+
+-- TODO: write this
+parsePhone :: Parser String
+parsePhone = undefined
+
+-- Employee <$> parseName <*> parsePhone
+
+------------------------------------------------------------

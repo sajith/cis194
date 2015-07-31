@@ -91,3 +91,16 @@ instance Alternative Parser where
     Parser a <|> Parser b = Parser $ \s -> mplus (b s) (a s)
 
 ------------------------------------------------------------
+
+isUpper :: Char -> Bool
+isUpper = flip elem ['A'..'Z']
+
+intOrUpperCase :: Parser ()
+intOrUpperCase = (const () <$> satisfy (isUpper)) <|> (const () <$> posInt)
+
+-- tests:
+-- runParser intOrUpperCase "342abcd" == Just ((), "abcd")
+-- runParser intOrUpperCase "XYZ"     == Just ((), "YZ")
+-- runParser intOrUpperCase "foo"     == Nothing
+
+------------------------------------------------------------

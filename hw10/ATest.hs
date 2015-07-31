@@ -3,6 +3,7 @@ module ATest where
 
 import           Control.Applicative
 import           Control.Monad
+import           Data.Char           (isUpper)
 
 import           AParser
 
@@ -91,9 +92,6 @@ instance Alternative Parser where
     Parser a <|> Parser b = Parser $ \s -> mplus (b s) (a s)
 
 ------------------------------------------------------------
-
-isUpper :: Char -> Bool
-isUpper = flip elem ['A'..'Z']
 
 intOrUpperCase :: Parser ()
 intOrUpperCase = (const () <$> satisfy (isUpper)) <|> (const () <$> posInt)

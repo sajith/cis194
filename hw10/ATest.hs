@@ -87,7 +87,7 @@ intPair = (\i1 _ i2 -> [i1,i2]) <$> posInt <*> char ' ' <*> posInt
 ------------------------------------------------------------
 
 instance Alternative Parser where
-    empty = undefined
+    empty = Parser (\_ -> Nothing)
     (<|>) = undefined
 
 ------------------------------------------------------------

@@ -53,12 +53,6 @@ intPair = (\i1 _ i2 -> [i1,i2]) <$> posInt <*> char ' ' <*> posInt
 
 ------------------------------------------------------------
 
--- class Applicative f => Alternative f where
---     empty :: f a
---     (<|>) :: f a -> f a -> f a
-
-------------------------------------------------------------
-
 instance Alternative Parser where
     empty = Parser $ const Nothing
     Parser a <|> Parser b = Parser $ \s -> mplus (b s) (a s)

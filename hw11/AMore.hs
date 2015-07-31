@@ -1,9 +1,10 @@
 
 module AMore where
 
-import           Data.Char (isUpper)
+import Control.Applicative
+import Data.Char (isUpper)
 
-import           AParser
+import AParser
 
 ------------------------------------------------------------
 

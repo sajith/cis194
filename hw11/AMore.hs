@@ -1,10 +1,10 @@
 
 module AMore where
 
-import Control.Applicative
-import Data.Char (isUpper)
+import           Control.Applicative
+import           Data.Char           (isAlpha, isUpper)
 
-import AParser
+import           AParser
 
 ------------------------------------------------------------
 
@@ -12,6 +12,6 @@ zeroOrMore :: Parser a -> Parser [a]
 zeroOrMore p = pure [] <|> oneOrMore p
 
 oneOrMore :: Parser a -> Parser [a]
-oneOrMore  = _
+oneOrMore p = (:) <$> p <*> zeroOrMore p
 
 ------------------------------------------------------------

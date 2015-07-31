@@ -30,30 +30,6 @@ instance Applicative Parser where
 
 ------------------------------------------------------------
 
--- for testing.
-
-type Name = String
-
-data Employee = Employee { name  :: Name
-                         , phone :: String }
-                deriving (Show)
-
--- TODO: write this
--- parseName :: Parser Name
--- parseName = Parser n
---     where
-
--- TODO: write this
-parsePhone :: Parser String
-parsePhone = Parser phone
-    where
-        -- phone = and $ map (\p -> p `elem` ['0'..'9'])
-        phone = undefined
-
--- Employee <$> parseName <*> parsePhone
-
-------------------------------------------------------------
-
 abParser :: Parser (Char, Char)
 abParser = (,) <$> char 'a' <*> char 'b'
 

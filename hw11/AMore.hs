@@ -25,6 +25,6 @@ oneOrMore p = (:) <$> p <*> zeroOrMore p
 ------------------------------------------------------------
 
 spaces :: Parser String
-spaces = oneOrMore (satisfy isSpace)
+spaces = zeroOrMore (satisfy isSpace)
 
 ------------------------------------------------------------

@@ -17,7 +17,7 @@ instance Functor Parser where
 
 instance Applicative Parser where
     pure a = Parser (\s -> Just (a, s))
-    (<*>) (Parser f) p2@(Parser p) =
+    (<*>) (Parser f) p2@(Parser _) =
         Parser $ \s ->
             case f s of
                 Nothing       -> Nothing

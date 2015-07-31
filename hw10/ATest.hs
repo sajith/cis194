@@ -2,7 +2,7 @@
 module ATest where
 
 import           Control.Applicative
-import           Control.Monad
+import           Control.Monad       (mplus)
 import           Data.Char           (isUpper)
 
 import           AParser

@@ -24,10 +24,6 @@ instance Applicative Parser where
                 Nothing       -> Nothing
                 Just (f', s') -> runParser (fmap f' p2) s'
 
--- instance Monad Parser where
---     (>>=) = undefined
---     return = undefined
-
 ------------------------------------------------------------
 
 abParser :: Parser (Char, Char)

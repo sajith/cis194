@@ -2,7 +2,7 @@
 module AMore where
 
 import           Control.Applicative
-import           Data.Char           (isAlpha, isSpace, isUpper)
+import           Data.Char           (isAlpha, isAlphaNum, isSpace, isUpper)
 
 import           AParser
 
@@ -26,5 +26,16 @@ oneOrMore p = (:) <$> p <*> zeroOrMore p
 
 spaces :: Parser String
 spaces = zeroOrMore (satisfy isSpace)
+
+------------------------------------------------------------
+
+ident :: Parser String
+ident = (:) <$> satisfy isAlpha <*> zeroOrMore (satisfy isAlphaNum)
+
+-- tests:
+-- runParser ident "foobar baz" == Just ("foobar"," baz")
+-- runParser ident "foo33fA" == Just ("foo33fA","")
+-- runParser ident "2bad" == Nothing
+-- runParser ident "" == Nothing
 
 ------------------------------------------------------------

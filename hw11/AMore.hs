@@ -48,14 +48,14 @@ parseAtom = N <$> posInt <|> I <$> ident
 parseParens :: Parser a -> Parser a
 parseParens exp = char '(' *> exp <* char ')'
 
-skipSpaces :: Parser a -> Parser a
-skipSpaces exp = spaces *> exp <* spaces
+parseSpaces :: Parser a -> Parser a
+parseSpaces exp = spaces *> exp <* spaces
 
 parseExprs :: Parser [SExpr]
 parseExprs = parseParens $ oneOrMore parseSExpr
 
 parseSExpr :: Parser SExpr
-parseSExpr = skipSpaces $ A <$> parseAtom <|> Comb <$> parseExprs
+parseSExpr = parseSpaces $ A <$> parseAtom <|> Comb <$> parseExprs
 
 -- tests
 -- runParser (spaces *> posInt) "   345" == Just (345,"")

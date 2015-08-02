@@ -45,11 +45,11 @@ ident = (:) <$> satisfy isAlpha <*> zeroOrMore (satisfy isAlphaNum)
 parseAtom :: Parser Atom
 parseAtom = N <$> posInt <|> I <$> ident
 
-parseExpr :: Parser SExpr
-parseExpr = undefined
+parseExprs :: Parser [SExpr]
+parseExprs = oneOrMore parseSExpr
 
 parseSExpr :: Parser SExpr
-parseSExpr = A <$> parseAtom <|> parseExpr
+parseSExpr = A <$> parseAtom <|> Comb <$> parseExprs
 
 -- tests
 -- runParser (spaces *> posInt) "   345" == Just (345,"")

@@ -5,6 +5,8 @@ import           Control.Applicative
 import           Data.Char           (isAlpha, isAlphaNum, isSpace, isUpper)
 
 import           AParser
+import           SExpr               hiding (ident, oneOrMore, spaces,
+                                      zeroOrMore)
 
 ------------------------------------------------------------
 
@@ -39,3 +41,10 @@ ident = (:) <$> satisfy isAlpha <*> zeroOrMore (satisfy isAlphaNum)
 -- runParser ident "" == Nothing
 
 ------------------------------------------------------------
+
+parseSExpr :: Parser SExpr
+parseSExpr = undefined
+
+------------------------------------------------------------
+
+

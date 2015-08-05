@@ -28,10 +28,15 @@ battle field = do
 -- Repeated calls to battle until there are defenders remaining, or
 -- fewer than two attackers.
 invade :: Battlefield -> Rand StdGen Battlefield
-invade field = if defenders field > 0 || attackers field > 2
+invade field@(Battlefield att def) = if def > 0 || att > 2
                then do
                     field' <- battle field
                     invade field'
                else return field
+
+------------------------------------------------------------
+
+successProb :: Battlefield -> Rand StdGen Double
+successProb field = undefined
 
 ------------------------------------------------------------

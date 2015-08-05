@@ -24,3 +24,10 @@ battle field = do
     return $ Battlefield remAs remDs
 
 ------------------------------------------------------------
+
+-- Repeated calls to battle until there are defenders remaining, or
+-- fewer than two attackers.
+invade :: Battlefield -> Rand StdGen Battlefield
+invade field = undefined
+
+------------------------------------------------------------

@@ -47,7 +47,6 @@ defLosses invs = sum $ map (\bf -> if defLost bf then 1 else 0) invs
 successProb :: Battlefield -> Rand StdGen Double
 successProb field = do
     invs <- replicateM 1000 (invade field)
-    let defLoss = defLosses invs
-    return $ defLoss / 1000
+    return $ (defLosses invs) / 1000
 
 ------------------------------------------------------------

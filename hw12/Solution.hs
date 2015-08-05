@@ -37,6 +37,8 @@ invade field@(Battlefield att def) = if def > 0 || att > 2
 ------------------------------------------------------------
 
 successProb :: Battlefield -> Rand StdGen Double
-successProb field = undefined
+successProb field = do
+    all <- mapM invade (replicate 1000 field)
+    return 0
 
 ------------------------------------------------------------

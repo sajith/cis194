@@ -38,10 +38,16 @@ invade field@(Battlefield att def) = if def > 0 || att > 2
 
 ------------------------------------------------------------
 
+defLost :: Battlefield -> Bool
+defLost (Battlefield as ds) = as > ds
+
+defLosses :: [Battlefield] -> Double
+defLosses invs = sum $ map (\bf -> if defLost bf then 1 else 0) invs
+
 successProb :: Battlefield -> Rand StdGen Double
 successProb field = do
     invs <- replicateM 1000 (invade field)
-    let defLoss = 0.0 :: Double
+    let defLoss = defLosses invs
     return $ defLoss / 1000
 
 ------------------------------------------------------------

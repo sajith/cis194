@@ -39,7 +39,7 @@ invade field@(Battlefield att def) = if def > 0 || att > 2
 ------------------------------------------------------------
 
 defLost :: Battlefield -> Bool
-defLost (Battlefield as ds) = ds == 0 && as > 2
+defLost (Battlefield a d) = d == 0 && a > 2
 
 defLosses :: [Battlefield] -> Double
 defLosses invs = sum $ map (\bf -> if defLost bf then 1 else 0) invs

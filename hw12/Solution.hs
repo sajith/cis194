@@ -38,10 +38,8 @@ invade field@(Battlefield att def) = if def > 0 || att > 2
 
 successProb :: Battlefield -> Rand StdGen Double
 successProb field = do
-    all <- mapM invade (replicate n field)
+    all <- mapM invade (replicate 1000 field)
     let defLoss = 0.0 :: Double
-    return $ defLoss / (toEnum n)
-    where
-        n = 1000
+    return $ defLoss / 1000
 
 ------------------------------------------------------------

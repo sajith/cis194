@@ -50,3 +50,9 @@ successProb field = do
     return $ defLosses invs / 1000
 
 ------------------------------------------------------------
+
+-- TODO: how to do this?
+exactSuccessProb :: Battlefield -> Double
+exactSuccessProb field = undefined
+
+------------------------------------------------------------

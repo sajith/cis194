@@ -7,9 +7,12 @@ import           Risk
 ------------------------------------------------------------
 
 dieRoll :: Battlefield -> (Army, Army)
-dieRoll field | attackers field <= 1 = (0, defenders field)
-              | defenders field <= 0 = (attackers field, 0)
-              | otherwise            = (min (attackers field) 3, min (defenders field) 2)
+dieRoll field | att <= 1  = (0, def)
+              | def <= 0  = (att, 0)
+              | otherwise = (min att 3, min def 2)
+    where
+        att = attackers field
+        def = defenders field
 
 
 battle :: Battlefield -> Rand StdGen Battlefield

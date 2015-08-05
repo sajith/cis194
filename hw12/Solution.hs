@@ -1,7 +1,9 @@
 
 module Solution where
 
+import           Control.Monad        (replicateM)
 import           Control.Monad.Random
+
 import           Risk
 
 ------------------------------------------------------------
@@ -38,7 +40,7 @@ invade field@(Battlefield att def) = if def > 0 || att > 2
 
 successProb :: Battlefield -> Rand StdGen Double
 successProb field = do
-    all <- mapM invade (replicate 1000 field)
+    all <- replicateM 1000 (invade field)
     let defLoss = 0.0 :: Double
     return $ defLoss / 1000
 

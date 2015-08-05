@@ -42,7 +42,7 @@ defLost :: Battlefield -> Bool
 defLost (Battlefield a d) = d == 0 && a > 2
 
 defLosses :: [Battlefield] -> Double
-defLosses invs = sum $ map (\bf -> if defLost bf then 1 else 0) invs
+defLosses = sum . map (\bf -> if defLost bf then 1 else 0)
 
 successProb :: Battlefield -> Rand StdGen Double
 successProb field = do

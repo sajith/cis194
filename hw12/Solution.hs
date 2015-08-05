@@ -17,9 +17,9 @@ dieRoll field | att <= 1  = (0, def)
 -- TODO: I'm confused by the problem description..
 battle :: Battlefield -> Rand StdGen Battlefield
 battle field = do
-    let (attackers, defenders) = dieRoll field
-    deadAttackers <- undefined
-    deadDefenders <- undefined
-    return field
+    let (as, ds) = dieRoll field
+        remAs    = attackers field - as
+        remDs    = defenders field - ds
+    return $ Battlefield remAs remDs
 
 ------------------------------------------------------------

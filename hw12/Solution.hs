@@ -14,7 +14,8 @@ dieRoll field | att <= 1  = (0, def)
         att = attackers field
         def = defenders field
 
--- TODO: I'm confused by the problem description..
+-- TODO: I'm confused by the problem description... where do one
+-- "simulate randomly rolling the appropriate number of dice" and how?
 battle :: Battlefield -> Rand StdGen Battlefield
 battle field = do
     let (as, ds) = dieRoll field

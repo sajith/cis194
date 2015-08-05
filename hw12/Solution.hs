@@ -40,7 +40,7 @@ invade field@(Battlefield att def) = if def > 0 || att > 2
 
 successProb :: Battlefield -> Rand StdGen Double
 successProb field = do
-    all <- replicateM 1000 (invade field)
+    invs <- replicateM 1000 (invade field)
     let defLoss = 0.0 :: Double
     return $ defLoss / 1000
 
